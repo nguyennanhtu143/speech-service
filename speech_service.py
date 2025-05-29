@@ -5,7 +5,7 @@ from typing import Optional
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
-from google.cloud import speech_v1, texttospeech, language_v1
+from google.cloud import speech_v1, texttospeech
 from dotenv import load_dotenv
 from langdetect import detect, LangDetectException
 from pydub import AudioSegment
@@ -55,7 +55,6 @@ class SpeechToTextRequest(BaseModel):
 # Khởi tạo clients
 speech_client = speech_v1.SpeechClient()
 tts_client = texttospeech.TextToSpeechClient()
-language_client = language_v1.LanguageServiceClient()
 
 def cleanup_temp_file(file_path: str):
     """Xóa file tạm sau khi sử dụng"""
